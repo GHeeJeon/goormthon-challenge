@@ -13,7 +13,7 @@ class Main {
 		int sum_time = 0;
 		for (int i = 0; i < N; i++) {
 			sum_time += Integer.parseInt(br.readLine());
-		}
+		
 
 		int sum_merge_time = merge_time + sum_time;
 		
