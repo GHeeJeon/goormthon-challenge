@@ -1,24 +1,17 @@
 import java.io.*;
 import java.util.*;
 
-<<<<<<< HEAD
 public class CityTraveler {
     // 도시의 수, 도로의 수, 출발 도시, 도착 도시
     private static int numCities, numRoads, startCity, destCity;
     // 도시 연결 정보
     private static List<Integer>[] cityConnections;
     // 각 도시까지의 깊이 (거쳐온 도시의 수)
-=======
-public class Main {
-    private static int totalCities, totalRoads, startCity, endCity;
-    private static List<Integer>[] cityConnections;
->>>>>>> 494572cc3a589aee443ead0a4e975a78e46be631
     private static int[] cityDepth;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-<<<<<<< HEAD
         
         // 변수 초기화
         numCities = Integer.parseInt(st.nextToken());
@@ -29,15 +22,6 @@ public class Main {
 
         // 도로 연결 정보 입력
         for (int i = 0; i < numRoads; i++) {
-=======
-        totalCities = Integer.parseInt(st.nextToken());
-        totalRoads = Integer.parseInt(st.nextToken());
-        startCity = Integer.parseInt(st.nextToken());
-        endCity = Integer.parseInt(st.nextToken());
-        cityConnections = new ArrayList[totalCities + 1];
-
-        for (int i = 0; i < totalRoads; i++) {
->>>>>>> 494572cc3a589aee443ead0a4e975a78e46be631
             st = new StringTokenizer(br.readLine());
             int city1 = Integer.parseInt(st.nextToken());
             int city2 = Integer.parseInt(st.nextToken());
@@ -49,7 +33,6 @@ public class Main {
             cityConnections[city2].add(city1);
         }
 
-<<<<<<< HEAD
         // 각 날짜(도시)에 대해 공사 중일 때의 최단 경로 찾기
         for (int i = 1; i <= numCities; i++) {
             // 만약 출발 도시나 도착 도시에서 공사를 하고 있다면 -1 출력
@@ -64,24 +47,10 @@ public class Main {
 
     // 공사 중인 도시를 제외하고 최단 경로 찾기
     private static void findShortestPath(int underConstructionCity) {
-=======
-        for (int i = 1; i <= totalCities; i++) {
-            if (startCity == i || endCity == i) {
-                System.out.println(-1);
-                continue;
-            }
-            cityDepth = new int[totalCities + 1];
-            findAlternativePath(i);
-        }
-    }
-
-    private static void findAlternativePath(int blockedNode) {
->>>>>>> 494572cc3a589aee443ead0a4e975a78e46be631
         Queue<Integer> queue = new ArrayDeque<>();
         cityDepth[startCity] = 1;
         queue.add(startCity);
 
-<<<<<<< HEAD
         // BFS를 이용한 최단 경로 탐색
         while (!queue.isEmpty()) {
             int currentCity = queue.poll();
@@ -93,24 +62,12 @@ public class Main {
                 } 
                 // 아직 방문하지 않았고, 공사 중인 도시가 아니라면 큐에 추가
                 else if (cityDepth[adjacentCity] == 0 && adjacentCity != underConstructionCity) {
-=======
-        while (!queue.isEmpty()) {
-            int currentCity = queue.poll();
-            for (int adjacentCity : cityConnections[currentCity]) {
-                if (adjacentCity == endCity) {
-                    System.out.println(cityDepth[currentCity] + 1);
-                    return;
-                } else if (cityDepth[adjacentCity] == 0 && adjacentCity != blockedNode) {
->>>>>>> 494572cc3a589aee443ead0a4e975a78e46be631
                     cityDepth[adjacentCity] = cityDepth[currentCity] + 1;
                     queue.add(adjacentCity);
                 }
             }
         }
-<<<<<<< HEAD
         // 도달할 수 없는 경우 -1 출력
-=======
->>>>>>> 494572cc3a589aee443ead0a4e975a78e46be631
         System.out.println(-1);
     }
 }
